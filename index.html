@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="
+width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no
+">
+
+<title>PANEL ULTRA V2 ⚡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+
+background:
+radial-gradient(circle at top,
+#001122,
+#000814,
+#000);
+
+overflow-x:hidden;
+
+min-height:100vh;
+
+color:white;
+
+}
+
+/* BG */
+
+.bg{
+position:fixed;
+inset:0;
+overflow:hidden;
+z-index:-1;
+}
+
+/* GRID */
+
+.grid{
+position:absolute;
+inset:0;
+
+background-image:
+linear-gradient(rgba(0,255,255,.05) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,255,255,.05) 1px,transparent 1px);
+
+background-size:40px 40px;
+
+transform:
+perspective(700px)
+rotateX(80deg)
+scale(2);
+
+opacity:.12;
+
+animation:gridMove 10s linear infinite;
+}
+
+@keyframes gridMove{
+
+100%{
+
+transform:
+perspective(700px)
+rotateX(80deg)
+translateY(40px)
+scale(2);
+
+}
+
+}
+
+/* GLOW */
+
+.glow{
+position:absolute;
+border-radius:50%;
+filter:blur(140px);
+opacity:.35;
+animation:float 8s infinite alternate;
+}
+
+.g1{
+width:420px;
+height:420px;
+background:#00ffee;
+top:-120px;
+left:-120px;
+}
+
+.g2{
+width:320px;
+height:320px;
+background:#008cff;
+right:-100px;
+bottom:-50px;
+}
+
+.g3{
+width:260px;
+height:260px;
+background:#ff00ea;
+top:45%;
+left:30%;
+}
+
+@keyframes float{
+
+100%{
+
+transform:
+translateY(25px)
+translateX(20px);
+
+}
+
+}
+
+/* RGB */
+
+@keyframes rgb{
+
+0%{
+background-position:0% 50%;
+}
+
+100%{
+background-position:100% 50%;
+}
+
+}
+
+/* SNOW */
+
+.snow{
+
+position:fixed;
+
+top:-10px;
+
+background:white;
+
+border-radius:50%;
+
+pointer-events:none;
+
+z-index:999;
+
+box-shadow:
+0 0 10px white,
+0 0 20px #00ffee;
+
+animation:snowFall linear infinite;
+
+}
+
+@keyframes snowFall{
+
+0%{
+transform:
+translateY(-10px)
+translateX(0px);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:
+translateY(110vh)
+translateX(40px);
+opacity:0;
+}
+
+}
+
+/* PANEL */
+
+.panel{
+
+width:94%;
+
+max-width:540px;
+
+margin:auto;
+
+padding-bottom:40px;
+
+}
+
+/* CARD */
+
+.card{
+
+position:relative;
+
+padding:24px;
+
+margin-top:20px;
+
+border-radius:38px;
+
+background:
+linear-gradient(
+135deg,
+rgba(5,12,35,.96),
+rgba(0,0,0,.96)
+);
+
+backdrop-filter:blur(30px);
+
+overflow:hidden;
+
+box-shadow:
+0 0 40px rgba(0,255,255,.18),
+0 0 90px rgba(0,140,255,.10);
+
+}
+
+/* BORDER */
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+inset:-2px;
+
+padding:2px;
+
+border-radius:38px;
+
+background:
+linear-gradient(
+90deg,
+#00ffee,
+#008cff,
+#ff00ea,
+#00ffee
+);
+
+background-size:400% 400%;
+
+animation:rgb 5s linear infinite;
+
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+
+pointer-events:none;
+
+}
+
+/* TITLE */
+
+.title{
+
+font-size:38px;
+
+font-weight:900;
+
+text-align:center;
+
+margin-bottom:12px;
+
+background:
+linear-gradient(
+90deg,
+#00ffee,
+#008cff,
+#ff00ea
+);
+
+background-size:400% 400%;
+
+animation:rgb 5s linear infinite;
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-shadow:
+0 0 20px rgba(0,255,255,.45);
+
+}
+
+/* SUB */
+
+.sub{
+
+text-align:center;
+
+font-size:12px;
+
+opacity:.7;
+
+letter-spacing:2px;
+
+margin-bottom:20px;
+
+}
+
+/* INPUT */
+
+.input{
+
+width:100%;
+
+padding:18px;
+
+margin-top:18px;
+
+border:none;
+
+outline:none;
+
+border-radius:24px;
+
+background:
+rgba(0,0,0,.35);
+
+color:white;
+
+font-size:15px;
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+/* BUTTON */
+
+.btn{
+
+width:100%;
+
+padding:18px;
+
+margin-top:18px;
+
+border:none;
+
+border-radius:24px;
+
+font-size:15px;
+
+font-weight:900;
+
+cursor:pointer;
+
+color:white;
+
+background:
+linear-gradient(
+90deg,
+#00ffee,
+#008cff,
+#ff00ea
+);
+
+background-size:400% 400%;
+
+animation:rgb 4s linear infinite;
+
+box-shadow:
+0 0 20px rgba(0,255,255,.35),
+0 0 40px rgba(255,0,234,.15);
+
+transition:.2s;
+}
+
+.btn:active{
+transform:scale(.97);
+}
+
+/* INFO */
+
+.info{
+
+margin-top:18px;
+
+padding:18px;
+
+border-radius:24px;
+
+background:
+rgba(0,0,0,.35);
+
+border:1px solid rgba(255,255,255,.05);
+
+line-height:1.8;
+
+word-break:break-all;
+
+}
+
+/* FEATURES */
+
+.gridBox{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:14px;
+
+margin-top:20px;
+
+}
+
+.feature{
+
+padding:16px;
+
+border-radius:24px;
+
+background:
+linear-gradient(
+135deg,
+rgba(0,255,255,.12),
+rgba(255,0,234,.05)
+);
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+.featureTop{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:10px;
+
+}
+
+/* SWITCH */
+
+.switch{
+position:relative;
+display:inline-block;
+width:56px;
+height:30px;
+}
+
+.switch input{
+display:none;
+}
+
+.slider{
+position:absolute;
+inset:0;
+background:#333;
+border-radius:40px;
+transition:.4s;
+}
+
+.slider:before{
+content:"";
+position:absolute;
+height:22px;
+width:22px;
+left:4px;
+bottom:4px;
+background:white;
+border-radius:50%;
+transition:.4s;
+}
+
+input:checked + .slider{
+background:#00ffee;
+
+box-shadow:
+0 0 12px #00ffee,
+0 0 24px #00ffee;
+}
+
+input:checked + .slider:before{
+transform:translateX(26px);
+}
+
+/* RANGE */
+
+.range{
+
+margin-top:24px;
+
+padding:20px;
+
+border-radius:28px;
+
+background:
+linear-gradient(
+135deg,
+rgba(0,255,255,.08),
+rgba(255,0,234,.04)
+);
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+#percentText{
+
+font-size:42px;
+
+font-weight:900;
+
+margin:10px 0;
+
+color:#00ffee;
+
+text-shadow:
+0 0 15px #00ffee;
+
+}
+
+input[type=range]{
+
+width:100%;
+
+accent-color:#00ffee;
+
+}
+
+/* SELECT BOX */
+
+.selectBox{
+
+margin-top:24px;
+
+padding:20px;
+
+border-radius:28px;
+
+background:
+linear-gradient(
+135deg,
+rgba(0,255,255,.08),
+rgba(255,0,234,.04)
+);
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+.selectTitle{
+
+font-size:18px;
+
+font-weight:900;
+
+margin-bottom:14px;
+
+}
+
+.select{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+outline:none;
+
+border-radius:20px;
+
+background:
+rgba(0,0,0,.35);
+
+color:white;
+
+font-size:15px;
+
+font-weight:900;
+
+}
+
+/* NOTIFY */
+
+.notify{
+
+margin-top:24px;
+
+padding:20px;
+
+border-radius:28px;
+
+background:
+rgba(0,0,0,.35);
+
+border:1px solid rgba(255,255,255,.05);
+
+line-height:2;
+
+}
+
+.on{
+color:#00ff66;
+}
+
+.off{
+color:#ff4444;
+}
+
+/* GAME */
+
+.games{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:14px;
+
+margin-top:24px;
+
+}
+
+.launch{
+
+width:100%;
+
+padding:20px;
+
+border:none;
+
+border-radius:24px;
+
+font-weight:900;
+
+font-size:15px;
+
+color:white;
+
+cursor:pointer;
+
+background:
+linear-gradient(
+90deg,
+#008cff,
+#00ffee,
+#ff00ea
+);
+
+background-size:300% 300%;
+
+animation:rgb 4s linear infinite;
+
+box-shadow:
+0 0 18px rgba(0,255,255,.35);
+
+transition:.2s;
+
+}
+
+.launch:active{
+
+transform:scale(.96);
+
+}
+
+/* STATS */
+
+.stats{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:14px;
+
+margin-top:24px;
+
+}
+
+.stat{
+
+padding:18px;
+
+border-radius:24px;
+
+background:
+rgba(0,0,0,.35);
+
+border:1px solid rgba(255,255,255,.05);
+
+text-align:center;
+
+}
+
+.statValue{
+
+font-size:34px;
+
+font-weight:900;
+
+margin-top:10px;
+
+color:#00ffee;
+
+text-shadow:
+0 0 10px #00ffee;
+
+}
+
+/* ECG */
+
+.graph{
+
+margin-top:24px;
+
+padding:20px;
+
+border-radius:28px;
+
+background:
+rgba(0,0,0,.35);
+
+border:1px solid rgba(255,255,255,.05);
+
+overflow:hidden;
+
+}
+
+canvas{
+
+width:100%;
+
+height:140px;
+
+background:black;
+
+border-radius:18px;
+
+display:block;
+
+}
+
+/* HIDDEN */
+
+.hidden{
+display:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg">
+
+<div class="grid"></div>
+
+<div class="glow g1"></div>
+
+<div class="glow g2"></div>
+
+<div class="glow g3"></div>
+
+</div>
+
+<div class="panel">
+
+<!-- LOGIN -->
+
+<div class="card" id="loginPage">
+
+<div class="title">
+
+PANEL ULTRA V2
+
+</div>
+
+<div class="sub">
+
+ĐÂY LÀ BẢN UPDATE CỦA PANEL ULTRA V1
+ĐƯỢC CẢI THIỆN  VÀ FIXX CÁC CHỨC NĂNG LỖI
+THÊM MỘT VÀI CHỨC NĂNG MỚI
+CHÚC MN CHƠI GAME VUI VE
+
+</div>
+
+<div class="info">
+
+<b>MÃ THIẾT BỊ</b>
+
+<br><br>
+
+<div id="deviceBox">
+ĐANG TẢI...
+</div>
+
+</div>
+
+<input
+class="input"
+id="keyInput"
+placeholder="NHẬP KEY">
+
+<button
+class="btn"
+onclick="login()">
+
+ĐĂNG NHẬP
+
+</button>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="card hidden" id="mainPage">
+
+<div class="title">
+
+PANEL ULTRA V2
+
+</div>
+
+<div class="info">
+
+<b>KEY:</b>
+<span id="showKey"></span>
+
+<br><br>
+
+<b>MÃ THIẾT BỊ:</b>
+<span id="showDevice"></span>
+
+</div>
+
+<!-- FEATURES -->
+
+<div class="gridBox" id="featureGrid"></div>
+
+<!-- RANGE -->
+
+<div class="range">
+
+<div style="font-size:18px;font-weight:900;">
+
+HEADSHOT BOOST
+
+</div>
+
+<div id="percentText">
+
+75%
+
+</div>
+
+<input
+type="range"
+min="1"
+max="100"
+value="75"
+id="rangeInput">
+
+</div>
+
+<!-- MODE -->
+
+<div class="selectBox">
+
+<div class="selectTitle">
+
+🚀 CHẾ ĐỘ PANEL
+
+</div>
+
+<select
+class="select"
+id="modeSelect">
+
+<option>ULTRA</option>
+<option>HIGH</option>
+<option selected>LOW</option>
+
+</select>
+
+</div>
+
+<!-- SPEED -->
+
+<div class="selectBox">
+
+<div class="selectTitle">
+
+⚡ TỐC ĐỘ PANEL
+
+</div>
+
+<select
+class="select"
+id="speedSelect">
+
+<option selected>x1</option>
+<option>x2</option>
+<option>x3</option>
+<option>x4</option>
+<option>x5</option>
+<option>x6</option>
+<option>x7</option>
+<option>x8</option>
+
+</select>
+
+</div>
+
+<!-- NOTIFY -->
+
+<div class="notify">
+
+<div style="font-size:18px;font-weight:900;">
+
+📢 THÔNG BÁO
+
+</div>
+
+<div id="notifyBox">
+
+ĐANG KIỂM TRA...
+
+</div>
+
+</div>
+
+<!-- GAME -->
+
+<div class="games">
+
+<button class="launch" onclick="openFF()">
+
+🔥 FREE FIRE
+
+</button>
+
+<button class="launch" onclick="openFFMAX()">
+
+⚡ FREE FIRE MAX
+
+</button>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+
+FPS
+
+<div class="statValue" id="fps">
+240
+</div>
+
+</div>
+
+<div class="stat">
+
+PING
+
+<div class="statValue">
+8
+</div>
+
+</div>
+
+</div>
+
+<!-- ECG -->
+
+<div class="graph">
+
+<div style="font-size:18px;font-weight:900;margin-bottom:14px;">
+
+FPS HEARTBEAT
+
+</div>
+
+<canvas
+id="fpsCanvas"
+width="1200"
+height="140">
+
+</canvas>
+
+</div>
+
+<button class="btn" onclick="logout()">
+
+ĐĂNG XUẤT
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* SNOW */
+
+for(let i=0;i<90;i++){
+
+const snow=document.createElement("div");
+
+snow.className="snow";
+
+const size=Math.random()*5+2;
+
+snow.style.width=size+"px";
+snow.style.height=size+"px";
+
+snow.style.left=Math.random()*100+"vw";
+
+snow.style.animationDuration=
+(6+Math.random()*10)+"s";
+
+snow.style.animationDelay=
+Math.random()*10+"s";
+
+snow.style.opacity=Math.random();
+
+document.body.appendChild(snow);
+
+}
+
+/* RANDOM */
+
+function rand(length){
+
+const chars =
+"0123456789";
+
+let result = "";
+
+for(let i=0;i<length;i++){
+
+result +=
+chars.charAt(
+Math.floor(
+Math.random()
+*
+chars.length
+)
+);
+
+}
+
+return result;
+
+}
+
+/* DEVICE */
+
+let deviceId =
+
+localStorage.getItem(
+"device_ultrav2"
+);
+
+if(!deviceId){
+
+deviceId =
+
+"IPHONE"
+
++ "-"
+
++ rand(4)
+
++ "-"
+
++ rand(4)
+
++ "-"
+
++ rand(4);
+
+localStorage.setItem(
+"device_ultrav2",
+deviceId
+);
+
+}
+
+document
+.getElementById("deviceBox")
+.innerText =
+deviceId;
+
+/* FEATURES */
+
+const features=[
+
+"HEADLOCK",
+"AIMLOCK",
+"FIX RUNG",
+"BOOST FPS",
+"BUFF DPI",
+"NO RECOIL",
+"240HZ",
+"SMART AI"
+
+];
+
+const grid=
+document.getElementById("featureGrid");
+
+features.forEach((f)=>{
+
+grid.innerHTML+=`
+
+<div class="feature">
+
+<div class="featureTop">
+
+<div>
+${f}
+</div>
+
+<label class="switch">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
+
+</div>
+
+ACTIVE
+
+</div>
+
+`;
+
+});
+
+/* RANGE */
+
+document
+.getElementById("rangeInput")
+.addEventListener("input",function(){
+
+document
+.getElementById("percentText")
+.innerText=
+this.value+"%";
+
+});
+
+/* LOGIN */
+
+window.login=function(){
+
+const key =
+document
+.getElementById("keyInput")
+.value
+.trim();
+
+if(key===""){
+
+alert("NHẬP KEY");
+
+return;
+
+}
+
+if(
+!key.match(/[0-9]{6}/)
+){
+
+alert("KHÔNG PHẢI KEY ULTRA V2");
+
+return;
+
+}
+
+localStorage.setItem(
+"ultrav2_key",
+key
+);
+
+document
+.getElementById("showKey")
+.innerText =
+key;
+
+document
+.getElementById("showDevice")
+.innerText =
+deviceId;
+
+document
+.getElementById("loginPage")
+.classList.add("hidden");
+
+document
+.getElementById("mainPage")
+.classList.remove("hidden");
+
+}
+
+/* AUTO */
+
+window.onload=function(){
+
+const saved =
+localStorage.getItem(
+"ultrav2_key"
+);
+
+if(saved){
+
+document
+.getElementById("showKey")
+.innerText =
+saved;
+
+document
+.getElementById("showDevice")
+.innerText =
+deviceId;
+
+document
+.getElementById("loginPage")
+.classList.add("hidden");
+
+document
+.getElementById("mainPage")
+.classList.remove("hidden");
+
+}
+
+}
+
+/* LOGOUT */
+
+window.logout=function(){
+
+localStorage.removeItem(
+"ultrav2_key"
+);
+
+location.reload();
+
+}
+
+/* GAME */
+
+window.openFF=function(){
+
+window.location.href=
+
+"https://apps.apple.com/app/free-fire/id1300146617";
+
+}
+
+window.openFFMAX=function(){
+
+window.location.href=
+
+"https://apps.apple.com/app/garena-free-fire-max/id1480516829";
+
+}
+
+/* FPS */
+
+setInterval(()=>{
+
+document
+.getElementById("fps")
+.innerText=
+Math.floor(
+220+Math.random()*20
+);
+
+},900);
+
+/* NOTIFY */
+
+function updateNotify(){
+
+const checks =
+document.querySelectorAll(
+".switch input"
+);
+
+let html = "";
+
+checks.forEach((c,index)=>{
+
+const name =
+
+document
+.querySelectorAll(".featureTop div")[index]
+.innerText;
+
+if(c.checked){
+
+html +=
+
+`<div class='on'>
+✅ ${name} : ĐÃ BẬT
+</div>`;
+
+}else{
+
+html +=
+
+`<div class='off'>
+❌ ${name} : CHƯA BẬT
+</div>`;
+
+}
+
+});
+
+document
+.getElementById("notifyBox")
+.innerHTML = html;
+
+}
+
+setInterval(
+updateNotify,
+300
+);
+
+/* ECG */
+
+const canvas =
+document.getElementById(
+"fpsCanvas"
+);
+
+const ctx =
+canvas.getContext("2d");
+
+function resizeCanvas(){
+
+canvas.width =
+canvas.offsetWidth;
+
+canvas.height = 140;
+
+}
+
+resizeCanvas();
+
+window.addEventListener(
+"resize",
+resizeCanvas
+);
+
+let points=[];
+
+let beatTimer = 0;
+
+function heartbeat(){
+
+beatTimer =
+Math.random()*80 + 60;
+
+}
+
+heartbeat();
+
+function drawGraph(){
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+if(
+points.length >
+canvas.width
+){
+
+points.shift();
+
+}
+
+let wave =
+
+70 +
+
+Math.sin(
+Date.now()/180
+)*3;
+
+beatTimer--;
+
+if(beatTimer <= 0){
+
+wave -= 75;
+
+setTimeout(()=>{
+
+wave += 35;
+
+},20);
+
+heartbeat();
+
+}
+
+wave +=
+(Math.random()*6-3);
+
+points.push(wave);
+
+ctx.beginPath();
+
+for(
+let i=0;
+i<points.length;
+i++
+){
+
+ctx.lineTo(
+i,
+points[i]
+);
+
+}
+
+ctx.strokeStyle =
+"#00ffee";
+
+ctx.lineWidth = 2;
+
+ctx.shadowColor =
+"#00ffee";
+
+ctx.shadowBlur = 18;
+
+ctx.stroke();
+
+requestAnimationFrame(
+drawGraph
+);
+
+}
+
+drawGraph();
+
+</script>
+
+</body>
+
+</html>
